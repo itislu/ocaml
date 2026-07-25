@@ -1,7 +1,7 @@
 let rec crossover l1 l2 =
   let rec contains hay needle =
     match hay with
-    | x :: rest -> if x = needle then true else contains rest needle
+    | x :: rest -> x = needle || contains rest needle
     | [] -> false
   in
   match l1 with
