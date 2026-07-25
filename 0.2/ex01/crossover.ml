@@ -1,13 +1,13 @@
 let rec crossover l1 l2 =
   let rec contains hay needle =
     match hay with
-    | x :: _ when x = needle -> true
-    | _ :: rest -> contains rest needle
+    | x :: rest -> if x = needle then true else contains rest needle
     | [] -> false
   in
   match l1 with
-  | x :: rest when contains l2 x -> x :: crossover rest l2
-  | _ :: rest -> crossover rest l2
+  | x :: rest ->
+      let result = crossover rest l2 in
+      if contains l2 x then x :: result else result
   | [] -> []
 
 let () =
