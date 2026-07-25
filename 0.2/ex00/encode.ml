@@ -8,16 +8,15 @@ let encode lst =
   count lst 1
 
 let () =
-  let print_list string_of_element lst =
-    Printf.printf "[%s]\n" (String.concat "; " (List.map string_of_element lst))
+  let print_encoded string_of_element lst =
+    let string_of_tuple string_of_value (count, value) =
+      Printf.sprintf "(%d, %s)" count (string_of_value value)
+    in
+    Printf.printf "[%s]\n"
+      (String.concat "; " (List.map (string_of_tuple string_of_element) lst))
   in
-  let string_of_tuple string_of_value (count, value) =
-    Printf.sprintf "(%d, %s)" count (string_of_value value)
-  in
-  print_list
-    (string_of_tuple Char.escaped)
-    (encode [ 'a'; 'a'; 'a'; 'b'; 'b'; 'b' ]);
-  print_list (string_of_tuple string_of_int) (encode [ 1; 1; 2; 3; 3; 3 ]);
-  print_list (string_of_tuple Fun.id) (encode [ "hello"; "hello" ]);
-  print_list (string_of_tuple Fun.id) (encode [ "Perl" ]);
-  print_list (string_of_tuple Fun.id) (encode [])
+  print_encoded Char.escaped (encode [ 'a'; 'a'; 'a'; 'b'; 'b'; 'b' ]);
+  print_encoded string_of_int (encode [ 1; 1; 2; 3; 3; 3 ]);
+  print_encoded Fun.id (encode [ "hello"; "hello" ]);
+  print_encoded Fun.id (encode [ "Perl" ]);
+  print_encoded Fun.id (encode [])
