@@ -1,13 +1,17 @@
-let is_alpha c = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-
 let ft_rot_n n str =
-  let ascii_A = int_of_char 'A' in
+  let upper_a = int_of_char 'A' in
   let rot c =
+    let is_alpha c = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') in
+    let to_upper v = v land 0x5F in
+    let get_case_bit v = v land 0x20 in
+    let set_case case_bit v = v lor case_bit in
+    let rotate upper = ((upper - upper_a + n) mod 26) + upper_a in
+
     if is_alpha c then
-      let ascii = int_of_char c in
-      let case_bit = ascii land 0x20 in
-      let upper = ascii land 0x5F in
-      (((upper - ascii_A + n) mod 26) + ascii_A) lor case_bit |> char_of_int
+      let ascii_val = int_of_char c in
+      let case_bit = get_case_bit ascii_val in
+      let upper = to_upper ascii_val in
+      rotate upper |> set_case case_bit |> char_of_int
     else c
   in
   String.map rot str
