@@ -2,15 +2,18 @@ let ft_rot_n n str =
   let upper_a = int_of_char 'A' in
   let rot c =
     let is_alpha c = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') in
-    let to_upper v = v land 0x5F in
-    let get_case_bit v = v land 0x20 in
+    let case_bit v = v land 0b00100000 in
+    let to_upper v = v land 0b01011111 in
     let set_case case_bit v = v lor case_bit in
-    let rotate upper = ((upper - upper_a + n) mod 26) + upper_a in
+    let rotate upper =
+      let alphabet_len = 26 in
+      ((upper - upper_a + n) mod alphabet_len) + upper_a
+    in
 
     if is_alpha c then
-      let ascii_val = int_of_char c in
-      let case_bit = get_case_bit ascii_val in
-      let upper = to_upper ascii_val in
+      let v = int_of_char c in
+      let case_bit = case_bit v in
+      let upper = to_upper v in
       rotate upper |> set_case case_bit |> char_of_int
     else c
   in
