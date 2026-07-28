@@ -2,7 +2,7 @@ let fibonacci n =
   let rec fib_helper n1 n2 i =
     if i = 0 then n1 else fib_helper n2 (n1 + n2) (i - 1)
   in
-  if n <= 0 then 0 else if n = 1 then 1 else fib_helper 0 1 n
+  if n < 0 then -1 else fib_helper 0 1 n
 
 let () =
   let print_fibonacci n =
