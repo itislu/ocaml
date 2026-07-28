@@ -91,11 +91,11 @@ let wrapper n =
 
 let gray n =
   (* to_name (String.make n '0') 0; *)
-  wrapper n;
+  if n < 0 then Printf.printf "Error" else wrapper n;
   Printf.printf "\n"
 
 let () =
-  (* gray (-1); *)
+  gray (-1);
   gray 0;
   gray 1;
   gray 2;
