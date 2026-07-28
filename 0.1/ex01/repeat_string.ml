@@ -1,9 +1,6 @@
-let repeat_string ?str n =
-  let repeat s n =
-    let rec helper res i = if i = 0 then res else helper (res ^ s) (i - 1) in
-    if n < 0 then "Error" else helper "" n
-  in
-  match str with Some s -> repeat s n | None -> repeat "x" n
+let repeat_string ?(str = "x") n =
+  let rec repeat res i = if i = 0 then res else repeat (res ^ str) (i - 1) in
+  if n < 0 then "Error" else repeat "" n
 
 let () =
   let print_repeat_string ?str n =
