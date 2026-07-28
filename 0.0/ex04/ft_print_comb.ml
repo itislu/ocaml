@@ -4,7 +4,7 @@ let ft_print_comb () =
       print_int n1;
       print_int n2;
       print_int n3;
-      if n1 <> 7 then print_string ", ";
+      if n1 < 7 then print_string ", ";
       print3 n1 n2 (n3 + 1))
   in
   let rec print2 n1 n2 =
