@@ -1,9 +1,7 @@
+let rec contains hay needle =
+  match hay with x :: rest -> x = needle || contains rest needle | [] -> false
+
 let rec crossover l1 l2 =
-  let rec contains hay needle =
-    match hay with
-    | x :: rest -> x = needle || contains rest needle
-    | [] -> false
-  in
   match l1 with
   | x :: rest ->
       let result = crossover rest l2 in
