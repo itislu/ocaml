@@ -1,10 +1,10 @@
-let rec hfs_f =
-  let hfs_f_nonneg = function 0 -> 1 | n -> n - hfs_m (hfs_f (n - 1)) in
-  function n when n < 0 -> -1 | n -> hfs_f_nonneg n
+let rec hfs_f n =
+  let hfs_f_nonneg n = if n = 0 then 1 else n - hfs_m (hfs_f (n - 1)) in
+  if n < 0 then -1 else hfs_f_nonneg n
 
-and hfs_m =
-  let hfs_m_nonneg = function 0 -> 0 | n -> n - hfs_f (hfs_m (n - 1)) in
-  function n when n < 0 -> -1 | n -> hfs_m_nonneg n
+and hfs_m n =
+  let hfs_m_nonneg n = if n = 0 then 0 else n - hfs_f (hfs_m (n - 1)) in
+  if n < 0 then -1 else hfs_m_nonneg n
 
 let () =
   hfs_m 0 |> Printf.printf "%d\n";
