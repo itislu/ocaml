@@ -11,4 +11,8 @@ let () =
   ackermann 0 0 |> Printf.printf "%d\n";
   ackermann 2 3 |> Printf.printf "%d\n";
   flush stdout;
-  ackermann 4 1 |> Printf.printf "%d\n"
+  ackermann 4 1 |> Printf.printf "%d\n";
+  ackermann 4 0 |> Printf.printf "%d\n";
+  ackermann 0 4 |> Printf.printf "%d\n";
+  ackermann 4 (-2) |> Printf.printf "%d\n";
+  ackermann (-4) (-2) |> Printf.printf "%d\n"
