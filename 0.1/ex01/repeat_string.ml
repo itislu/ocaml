@@ -9,4 +9,6 @@ let () =
   print_repeat_string ~str:"Toto" 1;
   print_repeat_string 2;
   print_repeat_string ~str:"a" 5;
-  print_repeat_string ~str:"what" 3
+  print_repeat_string ~str:"what" 3;
+  print_repeat_string ~str:"doublon" 0;
+  print_repeat_string ~str:"doublon" (-3)
