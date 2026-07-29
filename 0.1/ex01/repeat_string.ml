@@ -3,10 +3,7 @@ let repeat_string ?(str = "x") n =
   if n < 0 then "Error" else recurse "" n
 
 let () =
-  let print_repeat_string ?str n =
-    print_string (repeat_string ?str n);
-    print_char '\n'
-  in
+  let print_repeat_string ?str n = print_endline (repeat_string ?str n) in
   print_repeat_string (-1);
   print_repeat_string 0;
   print_repeat_string ~str:"Toto" 1;
