@@ -1,6 +1,6 @@
 let repeat_string ?(str = "x") n =
-  let rec repeat res i = if i = 0 then res else repeat (res ^ str) (i - 1) in
-  if n < 0 then "Error" else repeat "" n
+  let rec recurse res i = if i = 0 then res else recurse (res ^ str) (i - 1) in
+  if n < 0 then "Error" else recurse "" n
 
 let () =
   let print_repeat_string ?str n =
