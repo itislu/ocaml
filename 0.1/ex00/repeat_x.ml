@@ -1,6 +1,6 @@
 let repeat_x n =
-  let rec helper s i = if i = 0 then s else helper (s ^ "x") (i - 1) in
-  if n < 0 then "Error" else helper "" n
+  let rec recurse s i = if i = 0 then s else recurse (s ^ "x") (i - 1) in
+  if n < 0 then "Error" else recurse "" n
 
 let () =
   let print_repeat_x n =
