@@ -1,24 +1,21 @@
 let ft_rot_n n str =
   let upper_a = int_of_char 'A' in
-  let rot c =
+  let rot_char c =
     let is_alpha c = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') in
     let case_bit v = v land 0b00100000 in
     let to_upper v = v land 0b01011111 in
     let set_case case_bit v = v lor case_bit in
-    let rotate upper =
+    let rotate_upper v =
       let alpha_len = 26 in
-      ((((upper - upper_a + n) mod alpha_len) + alpha_len) mod alpha_len)
-      + upper_a
+      ((((v - upper_a + n) mod alpha_len) + alpha_len) mod alpha_len) + upper_a
     in
 
     if is_alpha c then
       let v = int_of_char c in
-      let case_bit = case_bit v in
-      let upper = to_upper v in
-      rotate upper |> set_case case_bit |> char_of_int
+      to_upper v |> rotate_upper |> set_case (case_bit v) |> char_of_int
     else c
   in
-  String.map rot str
+  String.map rot_char str
 
 let () =
   ft_rot_n 1 "abcdefghijklmnopqrstuvwxyz" |> print_endline;
