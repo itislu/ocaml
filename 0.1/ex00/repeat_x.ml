@@ -12,4 +12,4 @@ let () =
   print_repeat_x 1;
   print_repeat_x 2;
   print_repeat_x 5;
-  print_repeat_x 50000
+  print_repeat_x 90
