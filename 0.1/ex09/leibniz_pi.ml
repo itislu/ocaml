@@ -15,4 +15,5 @@ let leibniz_pi target_delta =
 
 let () =
   (* Printf.printf "%F\n" Float.pi; *)
-  Printf.printf "%d\n" (leibniz_pi 0.000001)
+  Printf.printf "%d\n" (leibniz_pi 0.000001);
+  Printf.printf "%d\n" (leibniz_pi (-0.000001))
