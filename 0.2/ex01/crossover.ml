@@ -16,6 +16,7 @@ let () =
   |> print_list string_of_int;
   crossover [] [ 0; 2; 4; 6; 8; 10 ] |> print_list string_of_int;
   crossover [ 1; 2; 3; 4; 5; 6 ] [] |> print_list string_of_int;
+  crossover [] [] |> print_list string_of_int;
   crossover [ "a"; "b"; "c" ] [ "x"; "y"; "z" ] |> print_list Fun.id;
   crossover [ "a"; "b"; "c" ] [ "a"; "a"; "a" ] |> print_list Fun.id;
   crossover [ "a"; "b"; "a" ] [ "a"; "x"; "y" ] |> print_list Fun.id
