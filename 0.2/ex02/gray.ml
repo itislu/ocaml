@@ -80,14 +80,14 @@ let rec to_name s i =
 
 let wrapper n =
   let s = ref (String.make n '0') in
-  let rec to_name s i =
-    if i = String.length !s then Printf.printf "%s " !s
+  let rec to_name i =
+    if i = n then Printf.printf "%s " !s
     else (
-      to_name s (i + 1);
+      to_name (i + 1);
       s := String.mapi (flipi i) !s;
-      to_name s (i + 1))
+      to_name (i + 1))
   in
-  to_name s 0
+  to_name 0
 
 let gray n =
   (* to_name (String.make n '0') 0; *)
