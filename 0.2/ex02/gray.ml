@@ -71,28 +71,18 @@
 
 let flip = function '0' -> '1' | '1' -> '0' | c -> c
 let flipi i_toflip i_cur c = if i_cur = i_toflip then flip c else c
-
-let rec to_name s i =
-  if i = String.length s then Printf.printf "%s " s
-  else (
-    to_name s (i + 1);
-    to_name (String.mapi (flipi i) s) (i + 1))
-
-let wrapper n =
-  let s = ref (String.make n '0') in
-  let rec to_name i =
-    if i = n then Printf.printf "%s " !s
-    else (
-      to_name (i + 1);
-      s := String.mapi (flipi i) !s;
-      to_name (i + 1))
-  in
-  to_name 0
+let fst (a, _) = a
 
 let gray n =
-  (* to_name (String.make n '0') 0; *)
-  if n < 0 then Printf.printf "Error" else wrapper n;
-  Printf.printf "\n"
+  if n < 0 then print_endline "Error"
+  else
+    let rec generate i acc s =
+      if i = n then (acc ^ " " ^ s, s)
+      else
+        let acc, s = generate (i + 1) acc s in
+        generate (i + 1) acc (String.mapi (flipi i) s)
+    in
+    String.make n '0' |> generate 0 "" |> fst |> String.trim |> print_endline
 
 let () =
   gray (-1);
